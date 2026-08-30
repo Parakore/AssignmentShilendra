@@ -1,0 +1,48 @@
+{
+  "states": ["APPLIED", "PENDING_APPROVAL", "APPROVED", "REJECTED", "CANCELLED"],
+  "initialState": "APPLIED",
+  "transitions": [
+    {
+      "action": "VERIFY",
+      "fromState": "APPLIED",
+      "toState": "PENDING_APPROVAL",
+      "allowedRoles": ["VERIFIER"],
+      "description": "Junior Engineer verifies the application and forwards for approval"
+    },
+    {
+      "action": "SEND_BACK",
+      "fromState": "PENDING_APPROVAL",
+      "toState": "APPLIED",
+      "allowedRoles": ["VERIFIER"],
+      "description": "Junior Engineer sends the application back to applicant for corrections"
+    },
+    {
+      "action": "APPROVE",
+      "fromState": "PENDING_APPROVAL",
+      "toState": "APPROVED",
+      "allowedRoles": ["APPROVER"],
+      "description": "Executive Engineer grants road cutting permission"
+    },
+    {
+      "action": "REJECT",
+      "fromState": "PENDING_APPROVAL",
+      "toState": "REJECTED",
+      "allowedRoles": ["APPROVER"],
+      "description": "Executive Engineer rejects the road cutting application"
+    },
+    {
+      "action": "CANCEL",
+      "fromState": "APPLIED",
+      "toState": "CANCELLED",
+      "allowedRoles": ["APPLICANT"],
+      "description": "Applicant cancels their applied request"
+    },
+    {
+      "action": "EDIT",
+      "fromState": "APPLIED",
+      "toState": "APPLIED",
+      "allowedRoles": ["APPLICANT"],
+      "description": "Applicant edits and resubmits the application"
+    }
+  ]
+}

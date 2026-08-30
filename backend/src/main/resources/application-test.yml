@@ -1,0 +1,29 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: road-cutting-permission-backend
+  datasource:
+    url: jdbc:h2:mem:rcp_test_db;DB_CLOSE_DELAY=-1;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE
+    username: sa
+    password: ""
+    driver-class-name: org.h2.Driver
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+    validate-on-migrate: false
+    locations: classpath:db/migration
+
+rcp:
+  rates:
+    config-path: classpath:rates-config.json
+  workflow:
+    config-path: classpath:workflow-config.json
+  review-ref: "K7Q2"
+  max-search-limit: 50
+  default-search-limit: 20

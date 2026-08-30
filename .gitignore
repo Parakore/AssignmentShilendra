@@ -1,0 +1,13 @@
+target/
+*.class
+*.log
+.DS_Store
+.idea/
+*.iml
+.vscode/
+
+# Node
+node_modules/
+dist/
+.env.local
+.env.*.local
